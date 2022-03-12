@@ -1,0 +1,10 @@
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/wifi/webserver_wifi.c:63:25:webserver_wifi_init	8	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/wifi/webserver_wifi.c:82:32:wifi_get_credentials	8	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/wifi/webserver_wifi.c:104:25:webserver_wifi_connect	16	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/wifi/webserver_wifi.c:136:13:hnet_notify	56	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/wifi/webserver_wifi.c:226:32:Wifi_SPI_Config	8	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/wifi/webserver_wifi.c:270:13:Wifi_IO_Init	56	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/wifi/webserver_wifi.c:337:6:HAL_GPIO_EXTI_Rising_Callback	16	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/wifi/webserver_wifi.c:368:6:HAL_SPI_RxCpltCallback	16	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/wifi/webserver_wifi.c:382:6:HAL_SPI_TxCpltCallback	16	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/wifi/webserver_wifi.c:396:6:HAL_SPI_TxRxCpltCallback	16	static

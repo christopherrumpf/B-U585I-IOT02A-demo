@@ -1,0 +1,8 @@
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/checksumutils.c:46:16:UpdateCRC8	24	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/checksumutils.c:68:6:CRC8_Init	16	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/checksumutils.c:74:6:CRC8_Update	32	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/checksumutils.c:86:6:CRC8_Final	16	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/checksumutils.c:220:17:UpdateCRC16	24	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/checksumutils.c:241:6:CRC16_Init	16	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/checksumutils.c:247:6:CRC16_Update	32	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/checksumutils.c:259:6:CRC16_Final	16	static

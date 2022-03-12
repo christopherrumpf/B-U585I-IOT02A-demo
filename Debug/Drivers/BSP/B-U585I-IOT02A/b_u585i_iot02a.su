@@ -1,0 +1,15 @@
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:127:9:BSP_GetVersion	4	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:136:16:BSP_GetBoardName	4	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:145:16:BSP_GetBoardID	4	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:158:9:BSP_LED_Init	48	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:186:9:BSP_LED_DeInit	40	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:207:9:BSP_LED_On	24	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:225:9:BSP_LED_Off	24	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:243:9:BSP_LED_Toggle	24	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:261:9:BSP_LED_GetState	16	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:291:9:BSP_PB_Init	48	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:345:9:BSP_PB_DeInit	40	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:371:9:BSP_PB_GetState	16	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:381:6:BSP_PB_IRQHandler	16	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:391:13:BSP_PB_Callback	16	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a.c:602:13:BUTTON_USER_EXTI_Callback	8	static
