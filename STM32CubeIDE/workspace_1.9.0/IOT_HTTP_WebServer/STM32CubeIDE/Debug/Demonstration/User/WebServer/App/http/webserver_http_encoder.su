@@ -1,8 +1,0 @@
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/http/webserver_http_encoder.c:36:25:webserver_http_encode_html_response	40	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/http/webserver_http_encoder.c:83:25:webserver_http_encode_css_response	40	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/http/webserver_http_encoder.c:125:25:webserver_http_encode_js_response	40	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/http/webserver_http_encoder.c:167:25:webserver_http_encode_favicon_response	40	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/http/webserver_http_encoder.c:212:25:webserver_http_encode_sensor_response	40	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/http/webserver_http_encoder.c:250:25:webserver_http_encode_woff2_response	40	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/http/webserver_http_encoder.c:288:25:webserver_http_encode_json_response	40	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/http/webserver_http_encoder.c:327:25:webserver_http_encode_image_response	40	static

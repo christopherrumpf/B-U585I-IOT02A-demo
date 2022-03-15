@@ -1,7 +1,0 @@
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/Target/net_interface.c:31:17:sys_now	8	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/Target/net_interface.c:36:6:NetWifiGetDefaultStation	104	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/Target/net_interface.c:70:9:scan_cmd	104	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/Target/net_interface.c:99:18:NetInterfaceOn	32	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/Target/net_interface.c:135:6:NetInterfaceOff	24	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/Target/net_interface.c:160:6:NetInterfaceConnect	48	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/Target/net_interface.c:234:6:NetInterfaceDisconnect	24	static

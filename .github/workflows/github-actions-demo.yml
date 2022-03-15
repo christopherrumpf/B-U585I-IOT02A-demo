@@ -15,7 +15,7 @@ jobs:
       - name: Build
         run: |
           cd ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
-          make -j7 all
+          make all
       - name: Deploy build to Corellium instance...
         run: |
           npm install @corellium/corellium-api
