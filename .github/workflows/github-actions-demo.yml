@@ -14,6 +14,7 @@ jobs:
       - name: Build
         run: |
           which gcc
+          sudo apt install gcc-arm-none-eabi
           cd ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
           make all
       - name: Deploy build to Corellium instance...
