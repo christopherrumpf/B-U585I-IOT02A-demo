@@ -5,7 +5,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Core/Src/system_stm32u5xx.c 
+/home/runner/work/B-U585I-IOT02A-demo/B-U585I-IOT02A-demo/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Core/Src/system_stm32u5xx.c 
 
 OBJS += \
 ./Drivers/CMSIS/system_stm32u5xx.o 
@@ -15,7 +15,7 @@ C_DEPS += \
 
 
 # Each subdirectory must supply rules for building sources it contributes
-Drivers/CMSIS/system_stm32u5xx.o: /Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Core/Src/system_stm32u5xx.c Drivers/CMSIS/subdir.mk
+Drivers/CMSIS/system_stm32u5xx.o: /home/runner/work/B-U585I-IOT02A-demo/B-U585I-IOT02A-demo/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Core/Src/system_stm32u5xx.c Drivers/CMSIS/subdir.mk
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DSTM32U585xx -DUSE_HAL_DRIVER -c -I../../Drivers/CMSIS/Include -I../../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../../Drivers/STM32U5xx_HAL_Driver/Inc -I../../Drivers/BSP/B-U585I-IOT02A -I../../Drivers/BSP/Components/mx_wifi -I../../Middlewares/ST/STM32_Network_Library/Includes -I../../Core/Inc -I../../WebServer/App -I../../WebServer/App/wifi -I../../WebServer/App/web_addons -I../../WebServer/App/sensors -I../../WebServer/App/http -I../../WebServer/Target -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 
 clean: clean-Drivers-2f-CMSIS

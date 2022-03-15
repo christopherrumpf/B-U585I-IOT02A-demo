@@ -5,12 +5,12 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/hts221/hts221.c \
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/hts221/hts221_reg.c \
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/ism330dhcx/ism330dhcx.c \
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/ism330dhcx/ism330dhcx_reg.c \
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/lps22hh/lps22hh.c \
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/lps22hh/lps22hh_reg.c 
+/home/runner/work/B-U585I-IOT02A-demo/B-U585I-IOT02A-demo/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/hts221/hts221.c \
+/home/runner/work/B-U585I-IOT02A-demo/B-U585I-IOT02A-demo/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/hts221/hts221_reg.c \
+/home/runner/work/B-U585I-IOT02A-demo/B-U585I-IOT02A-demo/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/ism330dhcx/ism330dhcx.c \
+/home/runner/work/B-U585I-IOT02A-demo/B-U585I-IOT02A-demo/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/ism330dhcx/ism330dhcx_reg.c \
+/home/runner/work/B-U585I-IOT02A-demo/B-U585I-IOT02A-demo/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/lps22hh/lps22hh.c \
+/home/runner/work/B-U585I-IOT02A-demo/B-U585I-IOT02A-demo/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/lps22hh/lps22hh_reg.c 
 
 OBJS += \
 ./Drivers/BSP/Components/hts221.o \
@@ -30,17 +30,17 @@ C_DEPS += \
 
 
 # Each subdirectory must supply rules for building sources it contributes
-Drivers/BSP/Components/hts221.o: /Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/hts221/hts221.c Drivers/BSP/Components/subdir.mk
+Drivers/BSP/Components/hts221.o: /home/runner/work/B-U585I-IOT02A-demo/B-U585I-IOT02A-demo/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/hts221/hts221.c Drivers/BSP/Components/subdir.mk
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DSTM32U585xx -DUSE_HAL_DRIVER -c -I../../Drivers/CMSIS/Include -I../../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../../Drivers/STM32U5xx_HAL_Driver/Inc -I../../Drivers/BSP/B-U585I-IOT02A -I../../Drivers/BSP/Components/mx_wifi -I../../Middlewares/ST/STM32_Network_Library/Includes -I../../Core/Inc -I../../WebServer/App -I../../WebServer/App/wifi -I../../WebServer/App/web_addons -I../../WebServer/App/sensors -I../../WebServer/App/http -I../../WebServer/Target -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
-Drivers/BSP/Components/hts221_reg.o: /Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/hts221/hts221_reg.c Drivers/BSP/Components/subdir.mk
+Drivers/BSP/Components/hts221_reg.o: /home/runner/work/B-U585I-IOT02A-demo/B-U585I-IOT02A-demo/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/hts221/hts221_reg.c Drivers/BSP/Components/subdir.mk
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DSTM32U585xx -DUSE_HAL_DRIVER -c -I../../Drivers/CMSIS/Include -I../../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../../Drivers/STM32U5xx_HAL_Driver/Inc -I../../Drivers/BSP/B-U585I-IOT02A -I../../Drivers/BSP/Components/mx_wifi -I../../Middlewares/ST/STM32_Network_Library/Includes -I../../Core/Inc -I../../WebServer/App -I../../WebServer/App/wifi -I../../WebServer/App/web_addons -I../../WebServer/App/sensors -I../../WebServer/App/http -I../../WebServer/Target -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
-Drivers/BSP/Components/ism330dhcx.o: /Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/ism330dhcx/ism330dhcx.c Drivers/BSP/Components/subdir.mk
+Drivers/BSP/Components/ism330dhcx.o: /home/runner/work/B-U585I-IOT02A-demo/B-U585I-IOT02A-demo/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/ism330dhcx/ism330dhcx.c Drivers/BSP/Components/subdir.mk
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DSTM32U585xx -DUSE_HAL_DRIVER -c -I../../Drivers/CMSIS/Include -I../../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../../Drivers/STM32U5xx_HAL_Driver/Inc -I../../Drivers/BSP/B-U585I-IOT02A -I../../Drivers/BSP/Components/mx_wifi -I../../Middlewares/ST/STM32_Network_Library/Includes -I../../Core/Inc -I../../WebServer/App -I../../WebServer/App/wifi -I../../WebServer/App/web_addons -I../../WebServer/App/sensors -I../../WebServer/App/http -I../../WebServer/Target -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
-Drivers/BSP/Components/ism330dhcx_reg.o: /Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/ism330dhcx/ism330dhcx_reg.c Drivers/BSP/Components/subdir.mk
+Drivers/BSP/Components/ism330dhcx_reg.o: /home/runner/work/B-U585I-IOT02A-demo/B-U585I-IOT02A-demo/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/ism330dhcx/ism330dhcx_reg.c Drivers/BSP/Components/subdir.mk
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DSTM32U585xx -DUSE_HAL_DRIVER -c -I../../Drivers/CMSIS/Include -I../../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../../Drivers/STM32U5xx_HAL_Driver/Inc -I../../Drivers/BSP/B-U585I-IOT02A -I../../Drivers/BSP/Components/mx_wifi -I../../Middlewares/ST/STM32_Network_Library/Includes -I../../Core/Inc -I../../WebServer/App -I../../WebServer/App/wifi -I../../WebServer/App/web_addons -I../../WebServer/App/sensors -I../../WebServer/App/http -I../../WebServer/Target -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
-Drivers/BSP/Components/lps22hh.o: /Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/lps22hh/lps22hh.c Drivers/BSP/Components/subdir.mk
+Drivers/BSP/Components/lps22hh.o: /home/runner/work/B-U585I-IOT02A-demo/B-U585I-IOT02A-demo/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/lps22hh/lps22hh.c Drivers/BSP/Components/subdir.mk
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DSTM32U585xx -DUSE_HAL_DRIVER -c -I../../Drivers/CMSIS/Include -I../../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../../Drivers/STM32U5xx_HAL_Driver/Inc -I../../Drivers/BSP/B-U585I-IOT02A -I../../Drivers/BSP/Components/mx_wifi -I../../Middlewares/ST/STM32_Network_Library/Includes -I../../Core/Inc -I../../WebServer/App -I../../WebServer/App/wifi -I../../WebServer/App/web_addons -I../../WebServer/App/sensors -I../../WebServer/App/http -I../../WebServer/Target -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
-Drivers/BSP/Components/lps22hh_reg.o: /Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/lps22hh/lps22hh_reg.c Drivers/BSP/Components/subdir.mk
+Drivers/BSP/Components/lps22hh_reg.o: /home/runner/work/B-U585I-IOT02A-demo/B-U585I-IOT02A-demo/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/lps22hh/lps22hh_reg.c Drivers/BSP/Components/subdir.mk
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DSTM32U585xx -DUSE_HAL_DRIVER -c -I../../Drivers/CMSIS/Include -I../../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../../Drivers/STM32U5xx_HAL_Driver/Inc -I../../Drivers/BSP/B-U585I-IOT02A -I../../Drivers/BSP/Components/mx_wifi -I../../Middlewares/ST/STM32_Network_Library/Includes -I../../Core/Inc -I../../WebServer/App -I../../WebServer/App/wifi -I../../WebServer/App/web_addons -I../../WebServer/App/sensors -I../../WebServer/App/http -I../../WebServer/Target -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 
 clean: clean-Drivers-2f-BSP-2f-Components
