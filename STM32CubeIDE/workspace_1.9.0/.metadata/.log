@@ -1,0 +1,77 @@
+!SESSION 2022-03-11 21:39:51.966 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/chrrum01/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/chrrum01/.eclipse_keyring
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-03-11 21:40:21.676
+!MESSAGE Log4j initialized with config file /Users/chrrum01/STM32CubeIDE/workspace_1.9.0/.metadata/.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-03-11 21:40:29.379
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-03-11 21:40:37.171
+!MESSAGE ProjectImporter: already registered
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-03-11 21:53:09.053
+!MESSAGE Indexed 'IOT_HTTP_WebServer' (67 sources, 147 headers) in 8.51 sec: 21,465 declarations; 99,669 references; 0 unresolved inclusions; 3 syntax errors; 9 unresolved names (0.0074%)
+!SESSION 2022-03-12 09:09:55.778 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/chrrum01/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/chrrum01/.eclipse_keyring
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-03-12 09:10:15.742
+!MESSAGE Log4j initialized with config file /Users/chrrum01/STM32CubeIDE/workspace_1.9.0/.metadata/.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-03-12 09:10:29.455
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2022-03-12 10:03:48.628 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/chrrum01/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/chrrum01/.eclipse_keyring
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-03-12 10:04:16.940
+!MESSAGE Log4j initialized with config file /Users/chrrum01/STM32CubeIDE/workspace_1.9.0/.metadata/.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-03-12 10:04:36.735
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2022-03-14 08:46:07.982 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/chrrum01/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/chrrum01/.eclipse_keyring
+
+!ENTRY org.eclipse.core.resources 2 10035 2022-03-14 08:46:20.523
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-03-14 08:46:34.634
+!MESSAGE Log4j initialized with config file /Users/chrrum01/STM32CubeIDE/workspace_1.9.0/.metadata/.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-03-14 08:46:52.214
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2022-03-15 10:08:11.476 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/chrrum01/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/chrrum01/.eclipse_keyring
+
+!ENTRY org.eclipse.core.resources 2 10035 2022-03-15 10:08:26.619
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-03-15 10:08:52.073
+!MESSAGE Log4j initialized with config file /Users/chrrum01/STM32CubeIDE/workspace_1.9.0/.metadata/.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-03-15 10:09:07.340
+!MESSAGE Started RMI Server, listening on port 41337

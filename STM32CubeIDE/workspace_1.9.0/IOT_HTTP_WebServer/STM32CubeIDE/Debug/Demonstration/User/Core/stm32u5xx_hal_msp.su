@@ -1,0 +1,6 @@
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Core/Src/stm32u5xx_hal_msp.c:35:6:HAL_MspInit	24	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Core/Src/stm32u5xx_hal_msp.c:53:6:HAL_SPI_MspInit	256	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Core/Src/stm32u5xx_hal_msp.c:146:6:HAL_SPI_MspDeInit	16	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Core/Src/stm32u5xx_hal_msp.c:172:6:HAL_UART_MspInit	248	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Core/Src/stm32u5xx_hal_msp.c:205:6:HAL_UART_MspDeInit	16	static
+/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Core/Src/stm32u5xx_hal_msp.c:222:6:HAL_LPTIM_MspInit	320	static
