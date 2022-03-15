@@ -41,7 +41,7 @@ async function main() {
 
     // Upload firmware...
     console.log("Uploading IoT Firmware...");
-    let fw_image = await stm_instance.uploadIotFirmware("Debug/IOT_HTTP_WebServer.elf", "IOT_HTTP_WebServer.elf")
+    let fw_image = await stm_instance.uploadIotFirmware("STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf", "IOT_HTTP_WebServer.elf")
     
     // Reboot...
     console.log("Rebooting...");
