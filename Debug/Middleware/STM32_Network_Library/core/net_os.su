@@ -1,5 +1,0 @@
-../../Middlewares/ST/STM32_Network_Library/Includes/net_perf.h:62:24:net_get_cycle	4	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Middlewares/ST/STM32_Network_Library/core/net_os.c:902:6:net_perf_task_in	4	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Middlewares/ST/STM32_Network_Library/core/net_os.c:907:6:net_perf_task_out	4	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Middlewares/ST/STM32_Network_Library/core/net_os.c:913:6:net_perf_start	8	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Middlewares/ST/STM32_Network_Library/core/net_os.c:928:6:net_perf_report	8	static

@@ -1,7 +1,0 @@
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/mx_wifi_hci.c:52:13:mx_wifi_hci_pkt_verify	16	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/mx_wifi_hci.c:60:9:mx_wifi_hci_init	24	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/mx_wifi_hci.c:74:9:mx_wifi_hci_deinit	8	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/mx_wifi_hci.c:80:9:mx_wifi_hci_send	24	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/mx_wifi_hci.c:129:11:mx_wifi_hci_recv	24	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/mx_wifi_hci.c:140:6:mx_wifi_hci_free	16	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/mx_wifi_hci.c:152:6:mx_wifi_hci_input	24	static

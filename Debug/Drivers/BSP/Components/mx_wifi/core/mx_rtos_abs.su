@@ -1,5 +1,0 @@
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/mx_rtos_abs.c:68:9:noos_sem_wait	32	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/mx_rtos_abs.c:94:9:noos_fifo_init	24	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/mx_rtos_abs.c:124:6:noos_fifo_deinit	16	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/mx_rtos_abs.c:133:9:noos_fifo_push	32	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/mx_rtos_abs.c:160:7:noos_fifo_pop	40	static

@@ -1,3 +1,0 @@
-../../Drivers/BSP/Components/mx_wifi/mx_wifi_bare_os.h:49:25:mx_buf_alloc	24	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/mx_wifi_slip.c:50:10:slip_transfer	40	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/Drivers/BSP/Components/mx_wifi/core/mx_wifi_slip.c:101:11:slip_input_byte	24	static

@@ -1,5 +1,0 @@
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/http/webserver_http_response.c:74:25:webserver_http_start	8	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/http/webserver_http_response.c:138:32:http_treat_request	1528	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/http/webserver_http_response.c:243:32:http_send_response	24	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/http/webserver_http_response.c:272:32:http_send_headers_response	24	static
-/Users/chrrum01/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/WebServer/App/http/webserver_http_response.c:390:32:http_send	32	static
