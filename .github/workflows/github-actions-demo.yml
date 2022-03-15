@@ -15,4 +15,5 @@ jobs:
         run: |
           npm install @corellium/corellium-api
           node ${{ github.workspace }}//agent-install-custom-fw-stm32u5.js
+          sudo ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
