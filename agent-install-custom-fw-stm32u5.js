@@ -30,21 +30,24 @@ async function main() {
     console.log("Getting projects list...");
     let projects = await corellium.projects();
 
-    // Individual accounts have a default project
+    // Individual accounts have a default project...
     let project = projects[0];
 
     console.log("Getting rumpf-stm32u5 instance...");
     let instances = await project.instances();
 
-    // Assuming you used that name for your Android device; if you left it alone, it's 'Android'
+    // Get rumpf's stm-32 instance...
     let stm_instance = instances.find((instance) => instance.name === "rumpf-stm32u5");
 
-//    console.log("Uploading IoT Firmware...");
-//    let fw_image = await stm_instance.uploadIotFirmware("Debug/IOT_HTTP_WebServer.elf", "IOT_HTTP_WebServer.elf")
+    // Upload firmware...
+    console.log("Uploading IoT Firmware...");
+    let fw_image = await stm_instance.uploadIotFirmware("Debug/IOT_HTTP_WebServer.elf", "IOT_HTTP_WebServer.elf")
     
-//    console.log("Rebooting...");
-//    await stm_instance.reboot();
+    // Reboot...
+    console.log("Rebooting...");
+    await stm_instance.reboot();
 
+    // Modify peripheral data...
     let peripherals = await stm_instance.getPeripherals();
     console.log(peripherals);
 
@@ -63,8 +66,8 @@ async function main() {
         }
     }
 
-    console.log("Getting rumpf-pi instance...");
-    let pi_instance = instances.find((instance) => instance.name === "rumpf-pi");
+//    console.log("Getting rumpf-pi instance...");
+//    let pi_instance = instances.find((instance) => instance.name === "rumpf-pi");
 
     return;
 }
