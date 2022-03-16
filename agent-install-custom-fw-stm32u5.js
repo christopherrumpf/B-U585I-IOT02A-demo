@@ -1,3 +1,4 @@
+const { PromiseSocket, TimeoutError } = require("promise-socket")
 const { Corellium } = require("@corellium/corellium-api");
 const fs = require("fs");
 
@@ -18,88 +19,130 @@ async function readSensor(ip, sensor) {
 }
 
 async function readHumiditySensor(instance) {
-return await readSensor(instance.info.wifiIp, "Humidity")
+    return await readSensor(instance.info.wifiIp, "Humidity")
 }
 
 async function readPressureSensor(instance) {
-return await readSensor(instance.info.wifiIp, "Pressure")
+    return await readSensor(instance.info.wifiIp, "Pressure")
 }
 
 async function readTemperatureSensor(instance) {
-return await readSensor(instance.info.wifiIp, "Temperature")
+    return await readSensor(instance.info.wifiIp, "Temperature")
 }
 
 
-
 async function main() {
-    let pdata =
-    {
-        "acceleration": "0.000000,9.810000,0.000000",
-        "gyroscope": "0.000000,0.000000,0.000000",
-        "magnetic": "0.000000,45.000000,0.000000",
-        "orientation": "0.000000,0.000000,0.000000",
-        "temperature": "70.000000",
-        "proximity": "50.000000",
-        "light": "20.000000",
-        "pressure": "1013.250000",
-        "humidity": "55.000000"
-        };
 
-        let pdata_orig = pdata;
+  // Configure the API.
+  let corellium = new Corellium({
+      endpoint: "https://arm.corellium.io",
+      username: "christopher.rumpf@arm.com",
+      password: "hufjus-6hanfy-rasxUh",
+  });
 
-    // Configure the API.
-    let corellium = new Corellium({
-        endpoint: "https://arm.corellium.io",
-        username: "christopher.rumpf@arm.com",
-        password: "hufjus-6hanfy-rasxUh",
+  console.log("Logging in...");
+  await corellium.login();
+
+  console.log("Getting projects list...");
+  let projects = await corellium.projects();
+
+  // Individual accounts have a default project...
+  let project = projects[0];
+
+  console.log("Getting rumpf-stm32u5 instance...");
+  let instances = await project.instances();
+
+  // Get rumpf's stm-32 instance...
+  let stm_instance = instances.find((instance) => instance.name === "rumpf-stm32u5");
+
+  // Upload firmware...
+  console.log("Uploading IoT Firmware...");
+  let fw_image = await stm_instance.uploadIotFirmware("STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf", "IOT_HTTP_WebServer.elf")
+
+  // Reboot...
+  console.log("Rebooting...");
+  await stm_instance.reboot();
+
+  // Sleep to let wifi connect
+  console.log("Script sleeping 10000ms (10s) to allow wifi to connect...");
+  await sleep(10000);
+
+    // set sensor ranges
+  var temp_low = 20;
+  var temp_high = 30;
+  var press_low = 980;
+  var press_high = 1030;
+  var humid_low = 20;
+  var humid_high = 70;
+
+  // set initial values
+  await stm_instance.modifyPeripherals({
+      "temperature": "25.0",
+      "pressure": "1005.0",
+      "humidity": "45.0"
+  });
+
+  var x = 0.0;
+  for (let i = 0; i < 2; i++) {
+    // generate sensor values
+    let temp_cur = (
+        Math.round((25 + Math.sin(x) * ((temp_high - temp_low) / 2)) * 4) * 0.25
+    ).toFixed(2);
+    let press_cur = (1005 + Math.sin(x) * ((press_high - press_low) / 2)).toFixed(2);
+    let humid_cur = (45 + Math.sin(x) * ((humid_high - humid_low) / 2)).toFixed(2);
+    console.log(
+        "Setting sensor values : [*] T: %f, P: %f, H: %f",
+        temp_cur,
+        press_cur,
+        humid_cur,
+    );
+    await stm_instance.modifyPeripherals({
+        temperature: temp_cur.toString(),
+        pressure: press_cur.toString(),
+        humidity: humid_cur.toString(),
     });
 
-    console.log("Logging in...");
-    await corellium.login();
-
-    console.log("Getting projects list...");
-    let projects = await corellium.projects();
-
-    // Individual accounts have a default project...
-    let project = projects[0];
-
-    console.log("Getting rumpf-stm32u5 instance...");
-    let instances = await project.instances();
-
-    // Get rumpf's stm-32 instance...
-    let stm_instance = instances.find((instance) => instance.name === "rumpf-stm32u5");
-
-    // Upload firmware...
-    console.log("Uploading IoT Firmware...");
-    let fw_image = await stm_instance.uploadIotFirmware("STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf", "IOT_HTTP_WebServer.elf")
-
-    // Reboot...
-    console.log("Rebooting...");
-    await stm_instance.reboot();
-
-    // Modify peripheral data...
     let peripherals = await stm_instance.getPeripherals();
-    console.log(peripherals);
 
-    for( let i=0; i<30; i++) {
-        pdata.temperature++;
-        pdata.proximity++;
-        pdata.light++;
-        pdata.pressure++;
-        pdata.humidity++;
-        console.log("setting peripheral data to:");
-        console.log(pdata);
-        await stm_instance.modifyPeripherals(pdata);
+    // Compare the sensor levels reported by the device
+    const temp_result = Number(peripherals.temperature).toFixed(2);
+    const press_result = Number(peripherals.pressure).toFixed(2);
+    const humid_result = Number(peripherals.humidity).toFixed(2);
 
-        if ( i == 20 ) {
-            pdata = pdata_orig;
-        }
+    console.log(
+        "Getting sensor values : [*] T: %f, P: %f, H: %f",
+        temp_result,
+        press_result,
+        humid_result,
+    );
+
+    if (temp_result.toString() !== temp_cur.toString()) {
+        console.log(
+            "Temperature Sensor returned bad value:  " +
+                temp_result.toString() +
+                " cur: " +
+                temp_cur.toString(),
+        );
+        return;
     }
 
-    //    console.log("Getting rumpf-pi instance...");
-    //    let pi_instance = instances.find((instance) => instance.name === "rumpf-pi");
+    if (press_result.toString() !== press_cur.toString()) {
+        console.log(
+            "Pressure Sensor returned bad value: " +
+                press_result.toString() +
+                " cur: " +
+                press_cur.toString(),
+        );
+        return;
+    }
 
-    return;
+    if (humid_result.toString() !== humid_cur.toString()) {
+        console.log("Humidity Sensor returned bad value: " + humid_result.toString());
+        return;
+    }
+
+    x += Math.PI / 20.0;
+  }
 }
 
 main().catch((err) => {
