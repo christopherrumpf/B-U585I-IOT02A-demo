@@ -20,6 +20,6 @@ jobs:
       - name: Deploy build to Corellium instance...
         run: |
           npm install @corellium/corellium-api
-          node ${{ github.workspace }}//agent-install-custom-fw-stm32u5.js
+          node ${{ github.workspace }}/agent-install-custom-fw-stm32u5-new.js
           sudo ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."

@@ -1,6 +1,36 @@
 const { Corellium } = require("@corellium/corellium-api");
 const fs = require("fs");
 
+function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+}
+  
+async function readSensor(ip, sensor) {
+    const client = new PromiseSocket()
+    await client.connect(80, ip)
+    await client.writeAll('GET /Read_' + sensor + ' HTTP/1.0\r\n', 1024)
+    const result = await client.readAll()
+    await sleep(500)
+    client.destroy()
+    return Number(result.toString()).toFixed(2)
+}
+
+async function readHumiditySensor(instance) {
+return await readSensor(instance.info.wifiIp, "Humidity")
+}
+
+async function readPressureSensor(instance) {
+return await readSensor(instance.info.wifiIp, "Pressure")
+}
+
+async function readTemperatureSensor(instance) {
+return await readSensor(instance.info.wifiIp, "Temperature")
+}
+
+
+
 async function main() {
     let pdata =
     {
@@ -13,9 +43,9 @@ async function main() {
         "light": "20.000000",
         "pressure": "1013.250000",
         "humidity": "55.000000"
-     };
+        };
 
-     let pdata_orig = pdata;
+        let pdata_orig = pdata;
 
     // Configure the API.
     let corellium = new Corellium({
@@ -42,7 +72,7 @@ async function main() {
     // Upload firmware...
     console.log("Uploading IoT Firmware...");
     let fw_image = await stm_instance.uploadIotFirmware("STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf", "IOT_HTTP_WebServer.elf")
-    
+
     // Reboot...
     console.log("Rebooting...");
     await stm_instance.reboot();
@@ -66,8 +96,8 @@ async function main() {
         }
     }
 
-//    console.log("Getting rumpf-pi instance...");
-//    let pi_instance = instances.find((instance) => instance.name === "rumpf-pi");
+    //    console.log("Getting rumpf-pi instance...");
+    //    let pi_instance = instances.find((instance) => instance.name === "rumpf-pi");
 
     return;
 }

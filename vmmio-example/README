@@ -1,0 +1,163 @@
+
+  Simplest vMMIO example
+  ~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Build the library and test programs with `make'.
+
+  * you could use a Raspberry Pi VM to build this and run the outside program
+
+2. Create a Raspberry Pi virtual machine with vMMIO:
+
+  * vMMIO at address 0xfef00000, size 0x1000
+  * vMMIO interrupt 80
+
+3. Start the Raspberry Pi VM, and copy `vmmio-test-inside` into it.
+
+  * this is the test program that accesses vMMIO from inside the VM
+  * it takes no arguments, you just run it
+
+4. Run `sudo ./vmmio-test-inside' in the vM. It should produce the following
+   results:
+
+ 0: 0xaa
+ 1: 0xaa
+ 2: 0xaa
+ 3: 0xaa
+ 4: 0xaa
+ 5: 0xaa
+ 6: 0xaa
+ 7: 0xaa
+ 8: 0xaa
+ 9: 0xaa
+10: 0xaa
+11: 0xaa
+12: 0xaa
+13: 0xaa
+14: 0xaa
+15: 0xaa
+ 0: 0xaaaa
+ 1: 0xaaaa
+ 2: 0xaaaa
+ 3: 0xaaaa
+ 4: 0xaaaa
+ 5: 0xaaaa
+ 6: 0xaaaa
+ 7: 0xaaaa
+ 8: 0xaaaa
+ 9: 0xaaaa
+10: 0xaaaa
+11: 0xaaaa
+12: 0xaaaa
+13: 0xaaaa
+14: 0xaaaa
+15: 0xaaaa
+ 0: 0xaaaaaaaa
+ 1: 0xaaaaaaaa
+ 2: 0xaaaaaaaa
+ 3: 0xaaaaaaaa
+ 4: 0xaaaaaaaa
+ 5: 0xaaaaaaaa
+ 6: 0xaaaaaaaa
+ 7: 0xaaaaaaaa
+ 8: 0xaaaaaaaa
+ 9: 0xaaaaaaaa
+10: 0xaaaaaaaa
+11: 0xaaaaaaaa
+12: 0xaaaaaaaa
+13: 0xaaaaaaaa
+14: 0xaaaaaaaa
+15: 0xaaaaaaaa
+ 0: 0xaaaaaaaaaaaaaaaa
+ 1: 0xaaaaaaaaaaaaaaaa
+ 2: 0xaaaaaaaaaaaaaaaa
+ 3: 0xaaaaaaaaaaaaaaaa
+ 4: 0xaaaaaaaaaaaaaaaa
+ 5: 0xaaaaaaaaaaaaaaaa
+ 6: 0xaaaaaaaaaaaaaaaa
+ 7: 0xaaaaaaaaaaaaaaaa
+ 8: 0xaaaaaaaaaaaaaaaa
+ 9: 0xaaaaaaaaaaaaaaaa
+10: 0xaaaaaaaaaaaaaaaa
+11: 0xaaaaaaaaaaaaaaaa
+12: 0xaaaaaaaaaaaaaaaa
+13: 0xaaaaaaaaaaaaaaaa
+14: 0xaaaaaaaaaaaaaaaa
+15: 0xaaaaaaaaaaaaaaaa
+
+5. Start the vmmio-test-outside program outside the VM, and give it the
+   VM's service IP and vMMIO port to connect to:
+
+  * ./vmmio-test-outside 10.10.0.1:4444
+
+6. Run `sudo ./vmmio-test-inside' in the VM again. It should produce
+   a different set of results:
+
+ 0: 0x00
+ 1: 0x01
+ 2: 0x02
+ 3: 0x03
+ 4: 0x04
+ 5: 0x05
+ 6: 0x06
+ 7: 0x07
+ 8: 0x08
+ 9: 0x09
+10: 0x0a
+11: 0x0b
+12: 0x0c
+13: 0x0d
+14: 0x0e
+15: 0x0f
+ 0: 0x0100
+ 1: 0x0201
+ 2: 0x0302
+ 3: 0x0403
+ 4: 0x0504
+ 5: 0x0605
+ 6: 0x0706
+ 7: 0x0807
+ 8: 0x0908
+ 9: 0x0a09
+10: 0x0b0a
+11: 0x0c0b
+12: 0x0d0c
+13: 0x0e0d
+14: 0x0f0e
+15: 0x100f
+ 0: 0x03020100
+ 1: 0x04030201
+ 2: 0x05040302
+ 3: 0x06050403
+ 4: 0x07060504
+ 5: 0x08070605
+ 6: 0x09080706
+ 7: 0x0a090807
+ 8: 0x0b0a0908
+ 9: 0x0c0b0a09
+10: 0x0d0c0b0a
+11: 0x0e0d0c0b
+12: 0x0f0e0d0c
+13: 0x100f0e0d
+14: 0x11100f0e
+15: 0x1211100f
+ 0: 0x0706050403020100
+ 1: 0x0807060504030201
+ 2: 0x0908070605040302
+ 3: 0x0a09080706050403
+ 4: 0x0b0a090807060504
+ 5: 0x0c0b0a0908070605
+ 6: 0x0d0c0b0a09080706
+ 7: 0x0e0d0c0b0a090807
+ 8: 0x0f0e0d0c0b0a0908
+ 9: 0x100f0e0d0c0b0a09
+10: 0x11100f0e0d0c0b0a
+11: 0x1211100f0e0d0c0b
+12: 0x131211100f0e0d0c
+13: 0x14131211100f0e0d
+14: 0x1514131211100f0e
+15: 0x161514131211100f
+
+7. The vmmio-test-outside program should also print a bunch of requests that
+   it has responded to.
+
+8. Done.
