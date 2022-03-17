@@ -1,5 +1,9 @@
 name: B-U585I-IOT02A-demo
-on: [push]
+
+on:
+  push:
+  workflow_dispatch:
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -7,20 +11,26 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      
       - name: Check out repository code
         uses: actions/checkout@v2
+        
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      
       - name: Build
         run: |
           which gcc
           sudo apt install gcc-arm-none-eabi
           cd ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
           make -j7 all
+      
       - name: Deploy build to Corellium instance...
         run: |
           npm install @corellium/corellium-api
           npm install promise-socket
+          npm install dotenv
           node ${{ github.workspace }}/agent-install-custom-fw-stm32u5.js
           sudo ls ${{ github.workspace }}
+          
       - run: echo "🍏 This job's status is ${{ job.status }}."
