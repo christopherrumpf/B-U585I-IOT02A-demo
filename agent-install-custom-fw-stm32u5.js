@@ -33,11 +33,15 @@ async function readTemperatureSensor(instance) {
 
 async function main() {
 
-  // Configure the API.
+// Read .env
+ const dotenv = require('dotenv');
+ dotenv.config();
+    
+// Configure the API.
   let corellium = new Corellium({
-      endpoint: "https://arm.corellium.io",
-      username: "christopher.rumpf@arm.com",
-      password: "hufjus-6hanfy-rasxUh",
+      endpoint: process.env.ENDPOINT,
+      username: process.env.USERNAME,
+      password: process.env.PASSWORD,
   });
 
   console.log("Logging in...");
@@ -49,11 +53,11 @@ async function main() {
   // Individual accounts have a default project...
   let project = projects[0];
 
-  console.log("Getting rumpf-stm32u5 instance...");
+  console.log("Getting instance...");
   let instances = await project.instances();
 
-  // Get rumpf's stm-32 instance...
-  let stm_instance = instances.find((instance) => instance.name === "rumpf-stm32u5");
+  // Get instance...
+  let stm_instance = instances.find((instance) => instance.name === process.env.INSTANCE);
 
   // Upload firmware...
   console.log("Uploading IoT Firmware...");
