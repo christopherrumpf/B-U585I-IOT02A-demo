@@ -24,11 +24,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: avh-test
+      - name: avh-test-prep
         uses: actions/download-artifact@master
         with:
           name: IOT_HTTP_WebServer.elf
           path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
+      - name: avh-test
         run: |
           find .
           touch .env
@@ -43,10 +44,11 @@ jobs:
     runs-on: self-hosted
     needs: build
     steps:
-      - name: real-device-test
+      - name: real-device-test-prep
         uses: actions/download-artifact@master
         with:
           name: IOT_HTTP_WebServer.elf
           path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
+      - name: real-device-test
         run: |
           find .
