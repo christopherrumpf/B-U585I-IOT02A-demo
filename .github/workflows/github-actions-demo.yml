@@ -13,13 +13,13 @@ jobs:
       - name: build
         run: |
           sudo apt install gcc-arm-none-eabi
-          cd ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
+          cd ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/
           make -j7 all
       - name: upload-binary
         uses: actions/upload-artifact@master
         with:
           name: IOT_HTTP_WebServer.elf
-          path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
+          path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf
   avh-test:
     runs-on: ubuntu-latest
     needs: build
@@ -30,7 +30,7 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: IOT_HTTP_WebServer.elf
-          path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
+          path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf
       - name: avh-test
         run: |
           touch .env
@@ -49,10 +49,10 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: IOT_HTTP_WebServer.elf
-          path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
+          path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf
       - name: real-device-test
         run: |
           hostname
           find .
-          echo "cp ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf /media/mrrumpf/DIS_U585AI/."
-          cp ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf /media/mrrumpf/DIS_U585AI/.
+          echo "cp ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf/IOT_HTTP_WebServer.elf /media/mrrumpf/DIS_U585AI/."
+          cp ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf/IOT_HTTP_WebServer.elf /media/mrrumpf/DIS_U585AI/.
