@@ -33,7 +33,6 @@ jobs:
           path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf
       - name: avh-test
         run: |
-          find .
           touch .env
           echo ENDPOINT="${{ secrets.ENDPOINT }}" >> .env
           echo USERNAME="${{ secrets.USERNAME }}" >> .env
@@ -46,8 +45,6 @@ jobs:
     runs-on: self-hosted
     needs: build
     steps:
-      - name: check out
-        uses: actions/checkout@v2
       - name: real-device-test-prep
         uses: actions/download-artifact@master
         with:
@@ -55,5 +52,5 @@ jobs:
           path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf
       - name: real-device-test
         run: |
-          find .
+          echo "cp ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf /media/mrrumpf/DIS_U585AI"
           cp ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf /media/mrrumpf/DIS_U585AI
