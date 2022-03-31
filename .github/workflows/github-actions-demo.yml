@@ -21,9 +21,7 @@ jobs:
           echo ENDPOINT="${{ secrets.ENDPOINT }}" >> .env
           echo USERNAME="${{ secrets.USERNAME }}" >> .env
           echo PASSWORD="${{ secrets.PASSWORD }}" >> .env
-          echo INSTANCE="${{ secrets.INSTANCE }}" >> .env
           cat .env
-          npm install @corellium/corellium-api
-          npm install promise-socket
+          npm install @corellium/corellium-api promise-socket dotenv
           node ${{ github.workspace }}/agent-install-custom-fw-stm32u5.js
           sudo ls ${{ github.workspace }}
