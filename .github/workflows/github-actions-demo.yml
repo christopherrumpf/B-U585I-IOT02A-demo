@@ -26,7 +26,8 @@ jobs:
           node ${{ github.workspace }}/agent-install-custom-fw-stm32u5.js
           sudo ls ${{ github.workspace }}
     runs-on: self-hosted
-    - name: Physical Test
+    steps:
+      - name: Physical Test
         run: |
           echo "hi"
           
