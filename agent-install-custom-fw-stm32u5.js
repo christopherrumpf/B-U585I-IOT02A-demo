@@ -54,9 +54,13 @@ async function main() {
 
     // Configure the API.
     let corellium = new Corellium({
-        endpoint: process.env.ENDPOINT,
-        username: process.env.USERNAME,
-        password: process.env.PASSWORD,
+//        endpoint: process.env.ENDPOINT,
+//        username: process.env.USERNAME,
+//        password: process.env.PASSWORD,
+        endpoint: "https://arm.corellium.io",
+        username: "christopher.rumpf@arm.com",
+        password: "hufjus-6hanfy-rasxUh",
+
     });
 
     console.log("Logging in...");
