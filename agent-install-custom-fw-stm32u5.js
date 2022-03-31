@@ -42,9 +42,12 @@ async function main() {
 
     // Instantiate some vars...
     let wifi_sleep = 5000;
-    let fw = "STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf";
     let instance_name = "rumpf-stm32u5";
     let instance_flavor = "stm32u5-b-u585i-iot02a";
+
+    // Get filename from command line...
+    const myArgs = process.argv.slice(2);
+    let fw = myArgs[0];
 
     // Read .env
     dotenv.config();
@@ -77,6 +80,7 @@ async function main() {
     let stm_instance = instances.find((instance) => instance.name === instance_name);
 
     // Create the instance if it does not already exist...
+    console.log("Uploading Firmware " + fw);
     if (!stm_instance) {
         console.log('[!] device not found, creating...');
         let customFirmware = await project.uploadIotFirmware(fw, path.basename(fw), (progress) => { })
@@ -173,8 +177,8 @@ async function main() {
     }
 
     // Test complete, cleanup...
-    console.log('\n[+] Test run completed, destroying ' + instance_name + '...\n');
-    await stm_instance.destroy();
+//    console.log('\n[+] Test run completed, destroying ' + instance_name + '...\n');
+//    await stm_instance.destroy();
 
 }
 

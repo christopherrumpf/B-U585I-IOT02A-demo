@@ -39,7 +39,7 @@ jobs:
           echo PASSWORD="${{ secrets.PASSWORD }}" >> .env
           cat .env
           npm install @corellium/corellium-api promise-socket dotenv
-          node ${{ github.workspace }}/agent-install-custom-fw-stm32u5.js
+          node ${{ github.workspace }}/agent-install-custom-fw-stm32u5.js ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf/IOT_HTTP_WebServer.elf
           sudo ls ${{ github.workspace }}
   real-device-test:
     runs-on: self-hosted
