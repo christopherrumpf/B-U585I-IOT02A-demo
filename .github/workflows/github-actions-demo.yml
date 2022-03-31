@@ -1,5 +1,9 @@
 name: B-U585I-IOT02A-demo
-on: [push]
+
+on:
+  push:
+  workflow_dispatch:
+
 jobs:
   GitHub-Actions:
     runs-on: ubuntu-latest
@@ -8,14 +12,18 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         run: |
-          which gcc
           sudo apt install gcc-arm-none-eabi
           cd ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
           make -j7 all
       - name: Test
         run: |
+          touch .env
+          echo ENDPOINT="${{ secrets.ENDPOINT }}" >> .env
+          echo USERNAME="${{ secrets.USERNAME }}" >> .env
+          echo PASSWORD="${{ secrets.PASSWORD }}" >> .env
+          echo INSTANCE="${{ secrets.INSTANCE }}" >> .env
+          cat .env
           npm install @corellium/corellium-api
           npm install promise-socket
-          echo "hello everyone!"
           node ${{ github.workspace }}/agent-install-custom-fw-stm32u5.js
           sudo ls ${{ github.workspace }}

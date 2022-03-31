@@ -45,13 +45,17 @@ async function main() {
     let instance_name = "rumpf-stm32u5";
     let instance_flavor = "stm32u5-b-u585i-iot02a";
 
-    // Login....
-    console.log("\nCI/CD test run starting...");
-    let corellium = new Corellium({
-        endpoint: "https://arm.corellium.io",
-        username: "christopher.rumpf@arm.com",
-        password: "hufjus-6hanfy-rasxUh",
-    });
+// Read .env
+ const dotenv = require('dotenv');
+ dotenv.config();
+    
+// Configure the API.
+  let corellium = new Corellium({
+      endpoint: process.env.ENDPOINT,
+      username: process.env.USERNAME,
+      password: process.env.PASSWORD,
+  });
+  
     console.log("Logging in...");
     await corellium.login();
 
