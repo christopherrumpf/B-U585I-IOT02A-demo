@@ -5,18 +5,31 @@ on:
   workflow_dispatch:
 
 jobs:
-  GitHub-Actions:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out
+      - name: check out
         uses: actions/checkout@v2
-      - name: Build
+      - name: build
         run: |
           sudo apt install gcc-arm-none-eabi
           cd ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
           make -j7 all
-      - name: Virtual Test
+      - uses: actions/upload-artifact@master
+        with:
+          name: IOT_HTTP_WebServer.elf
+          path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
+  avh-test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: avh-test
+      - uses: actions/download-artifact@master
+        with:
+          name: IOT_HTTP_WebServer.elf
+          path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
         run: |
+          find .
           touch .env
           echo ENDPOINT="${{ secrets.ENDPOINT }}" >> .env
           echo USERNAME="${{ secrets.USERNAME }}" >> .env
@@ -25,9 +38,14 @@ jobs:
           npm install @corellium/corellium-api promise-socket dotenv
           node ${{ github.workspace }}/agent-install-custom-fw-stm32u5.js
           sudo ls ${{ github.workspace }}
+  real-device-test:
     runs-on: self-hosted
+    needs: build
     steps:
-      - name: Physical Test
+      - name: real-device-test
+      - uses: actions/download-artifact@master
+        with:
+          name: IOT_HTTP_WebServer.elf
+          path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
         run: |
-          echo "hi"
-          
+          find .
