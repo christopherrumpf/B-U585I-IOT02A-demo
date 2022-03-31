@@ -2,6 +2,7 @@ const { PromiseSocket, TimeoutError } = require("promise-socket")
 const { Corellium } = require("@corellium/corellium-api");
 const fs = require("fs");
 const path = require("path");
+const dotenv = require('dotenv');
 
 // Helper function for sleep...
 function sleep(ms) {
@@ -45,17 +46,19 @@ async function main() {
     let instance_name = "rumpf-stm32u5";
     let instance_flavor = "stm32u5-b-u585i-iot02a";
 
-// Read .env
- const dotenv = require('dotenv');
- dotenv.config();
-    
-// Configure the API.
-  let corellium = new Corellium({
-      endpoint: process.env.ENDPOINT,
-      username: process.env.USERNAME,
-      password: process.env.PASSWORD,
-  });
-  
+    // Read .env
+    dotenv.config();
+    console.log("ENDPOINT=" + process.env.ENDPOINT);
+    console.log("USERNAME=" + process.env.USERNAME);
+    console.log("PASSWORD=" + process.env.PASSWORD);
+
+    // Configure the API.
+    let corellium = new Corellium({
+        endpoint: process.env.ENDPOINT,
+        username: process.env.USERNAME,
+        password: process.env.PASSWORD,
+    });
+
     console.log("Logging in...");
     await corellium.login();
 
@@ -80,8 +83,8 @@ async function main() {
             bootOptions: { kernel: customFirmware }
         })
         await stm_instance.waitForState('on')
-    // Reuse existing instance if it already exists...
-    } else {    
+        // Reuse existing instance if it already exists...
+    } else {
         let customFirmware = await project.uploadIotFirmware(fw, path.basename(fw), (progress) => { })
         if (!customFirmware) {
             console.log('[!] Upload failed');
