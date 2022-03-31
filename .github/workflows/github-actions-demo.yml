@@ -15,7 +15,8 @@ jobs:
           sudo apt install gcc-arm-none-eabi
           cd ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
           make -j7 all
-      - uses: actions/upload-artifact@master
+      - name: upload-binary
+        uses: actions/upload-artifact@master
         with:
           name: IOT_HTTP_WebServer.elf
           path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
@@ -24,7 +25,7 @@ jobs:
     needs: build
     steps:
       - name: avh-test
-      - uses: actions/download-artifact@master
+        uses: actions/download-artifact@master
         with:
           name: IOT_HTTP_WebServer.elf
           path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
@@ -43,7 +44,7 @@ jobs:
     needs: build
     steps:
       - name: real-device-test
-      - uses: actions/download-artifact@master
+        uses: actions/download-artifact@master
         with:
           name: IOT_HTTP_WebServer.elf
           path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug
