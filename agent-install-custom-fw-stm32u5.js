@@ -40,30 +40,37 @@ async function readTemperatureSensor(instance) {
 // Main...
 async function main() {
 
-    // Instantiate some vars...
-    let wifi_sleep = 5000;
-    let instance_name = "rumpf-stm32u5";
-    let instance_flavor = "stm32u5-b-u585i-iot02a";
-
-    // Get filename from command line...
-    const myArgs = process.argv.slice(2);
-    let fw = myArgs[0];
-
     // Read .env
     dotenv.config();
     console.log("ENDPOINT=" + process.env.ENDPOINT);
     console.log("USERNAME=" + process.env.USERNAME);
     console.log("PASSWORD=" + process.env.PASSWORD);
+    console.log("INSTANCE=" + process.env.INSTANCE);
+    console.log("FLAVOR=" + process.env.FLAVOR);
+    
+    
+    // Instantiate some vars...
+    let wifi_sleep = 5000;
+    let instance_name = "rumpf-stm32u5";
+    let instance_flavor = "stm32u5-b-u585i-iot02a";
+// Can be set via secrets instead
+//    let instance_name = process.env.INSTANCE;
+//    let instance_flavor = process.env.FLAVOR;
+    
+    
+    // Get filename from command line...
+    const myArgs = process.argv.slice(2);
+    let fw = myArgs[0];
+
 
     // Configure the API.
     let corellium = new Corellium({
-//        endpoint: process.env.ENDPOINT,
-//        username: process.env.USERNAME,
-//        password: process.env.PASSWORD,
-        endpoint: "https://arm.corellium.io",
-        username: "christopher.rumpf@arm.com",
-        password: "hufjus-6hanfy-rasxUh",
-
+        endpoint: process.env.ENDPOINT,
+        username: process.env.USERNAME,
+        password: process.env.PASSWORD,
+//        endpoint: "https://arm.corellium.io",
+//        username: "christopher.rumpf@arm.com",
+//        password: "hufjus-6hanfy-rasxUh",
     });
 
     console.log("Logging in...");
