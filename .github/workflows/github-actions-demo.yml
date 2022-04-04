@@ -38,21 +38,23 @@ jobs:
           echo ENDPOINT="${{ secrets.ENDPOINT }}" >> .env
           echo USERNAME="${{ secrets.USERNAME }}" >> .env
           echo PASSWORD="${{ secrets.PASSWORD }}" >> .env
+          echo INSTANCE="${{ secrets.INSTANCE }}" >> .env
+          echo FLAVOR="${{ secrets.FLAVOR }}" >> .env
           cat .env
           npm install @corellium/corellium-api promise-socket dotenv
           node ${{ github.workspace }}/agent-install-custom-fw-stm32u5.js ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin/IOT_HTTP_WebServer.bin
           sudo ls ${{ github.workspace }}
-  real-device-test:
-    runs-on: self-hosted
-    needs: build
-    steps:
-      - name: real-device-test-prep
-        uses: actions/download-artifact@master
-        with:
-          name: IOT_HTTP_WebServer.bin
-          path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin
-      - name: real-device-test
-        run: |
-          hostname
-          echo "cp ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/."
-          cp ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/.
+#  real-device-test:
+#    runs-on: self-hosted
+#    needs: build
+#    steps:
+#      - name: real-device-test-prep
+#        uses: actions/download-artifact@master
+#        with:
+#          name: IOT_HTTP_WebServer.bin
+#          path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin
+#      - name: real-device-test
+#        run: |
+#          hostname
+#          echo "cp ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/."
+#          cp ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/.
