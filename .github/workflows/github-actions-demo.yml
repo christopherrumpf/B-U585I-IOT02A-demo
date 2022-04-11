@@ -49,6 +49,7 @@ jobs:
           pip3 install websockets six python-dateutil urllib3 aiohttp
           git clone https://github.com/ARM-software/avh-api.git
           cp ${{ github.workspace }}/agent-install-custom-fw-stm32u5.py ${{ github.workspace }}/avh-api/python/examples/async/.
+          cd avh-api/python
           make examples/async/agent-install-custom-fw-stm32u5.py TOKEN=${{ secrets.API_TOKEN }} ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin
 
 #  real-device-test:
