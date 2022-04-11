@@ -37,11 +37,6 @@ jobs:
         with:
           name: IOT_HTTP_WebServer.bin
           path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin
-      - name: avh-test-script-prep
-        uses: actions/download-artifact@master
-        with:
-          name: agent-install-custom-fw-stm32u5.py
-          path: ${{ github.workspace }}/agent-install-custom-fw-stm32u5.py
       - name: avh-test
         run: |
           touch .env
@@ -53,9 +48,7 @@ jobs:
           cat .env
           pip3 install websockets six python-dateutil urllib3 aiohttp
           git clone git@github.com:ARM-software/avh-api.git
-          cd avh-api
-          cp ${{ github.workspace }}/agent-install-custom-fw-stm32u5.py python/examples/async/.
-          cp ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin python/examples/async/.
+          cp ${{ github.workspace }}/agent-install-custom-fw-stm32u5.py ${{ github.workspace }}/avh-api/python/examples/async/.
           make examples/async/agent-install-custom-fw-stm32u5.py TOKEN=${{ secrets.API_TOKEN }} ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin
 
 #  real-device-test:
