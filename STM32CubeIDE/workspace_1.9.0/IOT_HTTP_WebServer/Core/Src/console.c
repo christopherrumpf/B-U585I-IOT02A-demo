@@ -140,7 +140,7 @@ WebServer_StatusTypeDef webserver_console_get_ssid(ap_t *net_wifi_registred_hots
   }
 
   printf("\r\n");
-  printf("*** RUMPF BUILD, AUTOCONNECT TO Corellium SSID =====================================================================\r\n");
+  printf("*** RUMPF BUILD, AUTOCONNECT TO Arm SSID =====================================================================\r\n");
 
   /* Clear pending characters */
   if (HAL_UART_AbortReceive(&Console_UARTHandle) != HAL_OK)
@@ -149,7 +149,7 @@ WebServer_StatusTypeDef webserver_console_get_ssid(ap_t *net_wifi_registred_hots
   }
 
   /* Store user SSID */
-  net_wifi_registred_hotspot->ssid = "Corellium";
+  net_wifi_registred_hotspot->ssid = "arm";
 
   return WEBSERVER_OK;
 }
