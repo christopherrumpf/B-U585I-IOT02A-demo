@@ -164,9 +164,9 @@ async def main():
 
       print('Setting the VM to use the bsp test software')
       api_response = await api_instance.v1_create_image('iotfirmware', 'plain', 
-        name=fw,
+        name="IOT_HTTP_WebServer.bin",
         instance=instance.id,
-        file=os.path.join(sys.path[0], fw)
+        file=fw
       )
       pprint(api_response)
 
