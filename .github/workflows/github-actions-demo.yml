@@ -47,6 +47,7 @@ jobs:
           echo INSTANCE="${{ secrets.INSTANCE }}" >> .env
           cat .env
           pip3 install websockets six python-dateutil urllib3 aiohttp
+          npm install @openapitools/openapi-generator-cli -g
           git clone https://github.com/ARM-software/avh-api.git
           cp ${{ github.workspace }}/agent-install-custom-fw-stm32u5.py ${{ github.workspace }}/avh-api/python/examples/async/.
           cd avh-api/python
