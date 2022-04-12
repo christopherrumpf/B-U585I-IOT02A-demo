@@ -27,7 +27,7 @@ if len(sys.argv) < 3:
 #fw = sys.argv[3]
 apiEndpoint = "https://app.avh.arm.com/api"
 apiToken = "40258cd7c66f5999fddc.302aa699501a1f9b5695c1f1a1edf4125ba62419f772303944c8b239e97e66d86aab4b3b7ad6a0ef55d334892952b46d4a261f579ba48976d2b5ed9fc743c42f"
-fw = "../../../../STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin/IOT_HTTP_WebServer.bin"
+fw = "../../STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin/IOT_HTTP_WebServer.bin"
 
 pprint("debug...")
 pprint(apiEndpoint)
