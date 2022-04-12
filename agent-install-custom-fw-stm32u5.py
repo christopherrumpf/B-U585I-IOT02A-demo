@@ -24,7 +24,8 @@ if len(sys.argv) < 3:
 
 apiEndpoint = sys.argv[1]
 apiToken = sys.argv[2]
-fw = sys.argv[3]
+#fw = sys.argv[3]
+fw = "../../STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin"
 
 async def waitForState(instance, state):
   global api_instance
@@ -171,7 +172,6 @@ async def main():
 
     except Exception as e:      
       error = e
-
 
     if error != None:
       raise error
