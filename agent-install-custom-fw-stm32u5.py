@@ -20,7 +20,7 @@ ctx.verify_mode = ssl.CERT_NONE
 
 apiEndpoint = "https://app.avh.arm.com/api"
 apiToken = "40258cd7c66f5999fddc.302aa699501a1f9b5695c1f1a1edf4125ba62419f772303944c8b239e97e66d86aab4b3b7ad6a0ef55d334892952b46d4a261f579ba48976d2b5ed9fc743c42f"
-fw = "IOT_HTTP_WebServer.bin"
+fw = "IOT_HTTP_WebServer.elf"
 flavor = "stm32u5-b-u585i-iot02a"
 vmName = 'mrrumpf-B-U585I-IOT02A'
 
