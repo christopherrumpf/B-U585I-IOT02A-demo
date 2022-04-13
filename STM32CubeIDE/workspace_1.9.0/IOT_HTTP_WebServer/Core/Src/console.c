@@ -149,7 +149,7 @@ WebServer_StatusTypeDef webserver_console_get_ssid(ap_t *net_wifi_registred_hots
   }
 
   /* Store user SSID */
-  net_wifi_registred_hotspot->ssid = "arm";
+  net_wifi_registred_hotspot->ssid = "Arm";
 
   return WEBSERVER_OK;
 }
