@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: check out
+      - name: pull
         uses: actions/checkout@v2
       - name: build
         run: |
@@ -26,13 +26,13 @@ jobs:
         with:
           name: IOT_HTTP_WebServer.elf
           path: ${{ github.workspace }}/STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.elf
-  avh-test:
+  virtual-device-test:
     runs-on: ubuntu-latest
     needs: build
     steps:
       - name: pull tests
         uses: actions/checkout@v2
-      - name: pull test lib
+      - name: pull libs
         run: |
           git clone https://github.com/ARM-software/avh-api.git
       - name: download-elf
@@ -47,7 +47,7 @@ jobs:
           cp ${{ github.workspace }}/agent-install-custom-fw-stm32u5.py ${{ github.workspace }}/avh-api/python/examples/async/.
           cd avh-api/python
           make examples/async/agent-install-custom-fw-stm32u5.py
-  real-device-test:
+  physical-device-test:
     runs-on: self-hosted
     needs: build
     steps:
