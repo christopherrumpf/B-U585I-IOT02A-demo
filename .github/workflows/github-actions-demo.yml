@@ -34,7 +34,7 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: IOT_HTTP_WebServer.bin
-          path: ${{ github.workspace }}/avh-api/python
+          path: ${{ github.workspace }}/avh-api/python/examples/assets
       - name: avh-test
         run: |
           pip3 install websockets six python-dateutil urllib3 aiohttp

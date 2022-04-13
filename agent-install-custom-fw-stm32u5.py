@@ -156,7 +156,7 @@ async def main():
       api_response = await api_instance.v1_create_image('fwbinary', 'plain', 
         name=fw,
         instance=instance.id,
-        file=os.path.join(sys.path[0], fw)
+        file=os.path.join(sys.path[0], "../assets/" + fw)
       )
       pprint(api_response)
 
