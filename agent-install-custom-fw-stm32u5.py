@@ -18,21 +18,11 @@ ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
-if len(sys.argv) < 3:
-  print('Usage: %s <ApiEndpoint> <ApiToken>', sys.argv[0])
-  exit(-1)
-
-#apiEndpoint = sys.argv[1]
-#apiToken = sys.argv[2]
-#fw = sys.argv[3]
 apiEndpoint = "https://app.avh.arm.com/api"
 apiToken = "40258cd7c66f5999fddc.302aa699501a1f9b5695c1f1a1edf4125ba62419f772303944c8b239e97e66d86aab4b3b7ad6a0ef55d334892952b46d4a261f579ba48976d2b5ed9fc743c42f"
-fw = "../../STM32CubeIDE/workspace_1.9.0/IOT_HTTP_WebServer/STM32CubeIDE/Debug/IOT_HTTP_WebServer.bin/IOT_HTTP_WebServer.bin"
-
-pprint("debug...")
-pprint(apiEndpoint)
-pprint(apiToken)
-pprint(fw)
+fw = "IOT_HTTP_WebServer.bin"
+flavor = "stm32u5-b-u585i-iot02a"
+vmName = 'mrrumpf-B-U585I-IOT02A'
 
 async def waitForState(instance, state):
   global api_instance
@@ -150,7 +140,7 @@ async def main():
   
     print('Creating a new instance...')
     api_response = await api_instance.v1_create_instance({
-      "name": 'STM32U5-BSP-Test',
+      "name": vmName,
       "project": projectId,
       "flavor": chosenModel.flavor,
       "os": version
@@ -163,10 +153,10 @@ async def main():
       await waitForState(instance, 'on')
 
       print('Setting the VM to use the bsp test software')
-      api_response = await api_instance.v1_create_image('iotfirmware', 'plain', 
-        name="IOT_HTTP_WebServer.bin",
+      api_response = await api_instance.v1_create_image('fwbinary', 'plain', 
+        name=fw,
         instance=instance.id,
-        file=fw
+        file=os.path.join(sys.path[0], fw)
       )
       pprint(api_response)
 
@@ -174,11 +164,21 @@ async def main():
       api_response = await api_instance.v1_reboot_instance(instance.id)
       print('Waiting for VM to finish resetting...')
       await waitForState(instance, 'on')
-      await asyncio.sleep(10)
       print('done')
+#      print('Logging GPIO initial state:')
+#      gpios = await api_instance.v1_get_instance_gpios(instance.id)
+#      pprint(gpios)
+#      print('running test')
+#      await testBspImage(instance)
+#      print('Logging GPIO final state:')
+#      gpios = await api_instance.v1_get_instance_gpios(instance.id)
+#      pprint(gpios)
 
     except Exception as e:      
       error = e
+
+#    print('Deleting instance...')
+#    api_response = await api_instance.v1_delete_instance(instance.id)
 
     if error != None:
       raise error
