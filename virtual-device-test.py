@@ -1,12 +1,15 @@
-import asyncio
+from cmath import pi, sin
 import io
+from operator import ne
 import os
-from posixpath import dirname
 import re
-from websockets import client as ws
-from os import environ
-import time
 import sys
+import time
+import math
+import asyncio
+from os import environ
+from posixpath import dirname
+from websockets import client as ws
 
 import AvhClientAsync
 from AvhClientAsync.models import InstanceState
@@ -57,45 +60,6 @@ async def pressButton(instance):
       ]
     }
   })
-
-async def testBspImage(instance):
-  global api_instance
-  global ctx
-  text = ''
-  done = False
-
-  consoleEndpoint = await api_instance.v1_get_instance_console(instance.id)
-  console = await ws.connect(consoleEndpoint.url, ssl=ctx)
-  try:
-    async for message in console:
-      if done:
-        break
-
-      text += message.decode('utf-8')
-      while '\n' in text:
-        offset = text.find('\n')
-        line, text = text[:offset], text[offset+1:]
-        print('<< %s' % line)
-
-        match = re.match(r'(?:Switch \S+ LED(\d)|Please press.*User (button)|\**RANGING (SENSOR)\**)', line)
-        if (match):
-          if match[1]:
-            await printLeds(instance)
-          elif match[2]:
-            await pressButton(instance)
-          elif match[3]:
-            # Done testing GPIOs
-            print('Test completed')
-            done = True
-            break
-
-  finally:
-    console.close_timeout = 1
-    await console.close()
-
-
-# Defining the host is optional and defaults to https://app.avh.arm.com/api
-# See configuration.py for a list of all supported configuration parameters.
 
 exitStatus = 0
 
@@ -175,18 +139,47 @@ async def main():
       print('Logging GPIO initial state:')
       gpios = await api_instance.v1_get_instance_gpios(instance.id)
       pprint(gpios)
+
       print('running test')
-      await testBspImage(instance)
-      print('Logging GPIO final state:')
-      gpios = await api_instance.v1_get_instance_gpios(instance.id)
-      pprint(gpios)
+      temp_low = 20
+      temp_high = 30
+      press_low = 980
+      press_high = 1030
+      humid_low = 20
+      humid_high = 70
+
+      x = 0.0
+      for i in range(3):
+
+        print("\nTest run " + str(i) + "...")
+
+        t_cur = ((25 + math.sin(x) * ((temp_high - temp_low) / 2)) * 4) * 0.25
+        t_cur = f'{t_cur:.2f}'
+
+        # Set sensor values...
+        print("Setting sensor values : [*] T: " + str(t_cur))
+        api_response = await api_instance.v1_set_instance_peripherals(instance.id, {"temperature": t_cur})
+        pprint(api_response)
+
+        # Get sensor values...
+        p = await api_instance.v1_get_instance_peripherals(instance.id)
+        print("Got sensor values : [*] T: " + str(p.temperature))
+
+        if str(p.temperature) != str(t_cur):
+          print("FAIL T")
+
+        # TODO
+        # ADD WEBSCRAPER TO VALIDATE TEMP MADE IT THROUGH THE WEBSERVER
+
+        # Randomization...
+        x += math.pi / 20.0
 
     except Exception as e:      
       print('Encountered error; cleaning up...')
       error = e
 
-#    print('Deleting instance...')
-#    api_response = await api_instance.v1_delete_instance(instance.id)
+    print('Deleting instance...')
+    api_response = await api_instance.v1_delete_instance(instance.id)
 
     if error != None:
       raise error
