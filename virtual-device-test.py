@@ -178,9 +178,6 @@ async def main():
       print('Encountered error; cleaning up...')
       error = e
 
-    print('Deleting instance...')
-    api_response = await api_instance.v1_delete_instance(instance.id)
-
     if error != None:
       raise error
 
