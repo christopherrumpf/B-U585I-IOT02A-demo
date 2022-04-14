@@ -51,6 +51,8 @@ jobs:
     runs-on: self-hosted
     needs: build
     steps:
+      - name: pull
+        uses: actions/checkout@v2
       - name: download-bin
         uses: actions/download-artifact@master
         with:
@@ -58,6 +60,7 @@ jobs:
           path: ${{ github.workspace }}
       - name: test
         run: |
-          hostname
           echo "cp ${{ github.workspace }}/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/."
           cp ${{ github.workspace }}/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/.
+          npm install split2 promise-socket
+          node physical-sensor-test.js

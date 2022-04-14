@@ -116,6 +116,7 @@ async def main():
       "apiToken": apiToken,
     })
 
+
     print('Logged in')
     configuration.access_token = token_response.token
 
@@ -136,14 +137,20 @@ async def main():
 
     print('Finding software for our model...')
     api_response = await api_instance.v1_get_model_software(model.model)
-    version = api_response[0].version
-  
+    chosenSoftware = None
+    for software in api_response:
+      if software.filename.startswith('STM32U5-WiFiBasics'):
+        # This software package is compatible with our bsp.elf image
+        chosenSoftware = software
+        break
+
     print('Creating a new instance...')
     api_response = await api_instance.v1_create_instance({
       "name": vmName,
       "project": projectId,
       "flavor": chosenModel.flavor,
-      "os": version
+      "os": chosenSoftware.version,
+      "osbuild": chosenSoftware.buildid
     })
     instance = api_response
 
@@ -156,7 +163,7 @@ async def main():
       api_response = await api_instance.v1_create_image('fwbinary', 'plain', 
         name=fw,
         instance=instance.id,
-        file=os.path.join(sys.path[0], "../assets/" + fw)
+        file=os.path.join(sys.path[0], '../assets/' + fw)
       )
       pprint(api_response)
 
@@ -165,16 +172,17 @@ async def main():
       print('Waiting for VM to finish resetting...')
       await waitForState(instance, 'on')
       print('done')
-#      print('Logging GPIO initial state:')
-#      gpios = await api_instance.v1_get_instance_gpios(instance.id)
-#      pprint(gpios)
-#      print('running test')
-#      await testBspImage(instance)
-#      print('Logging GPIO final state:')
-#      gpios = await api_instance.v1_get_instance_gpios(instance.id)
-#      pprint(gpios)
+      print('Logging GPIO initial state:')
+      gpios = await api_instance.v1_get_instance_gpios(instance.id)
+      pprint(gpios)
+      print('running test')
+      await testBspImage(instance)
+      print('Logging GPIO final state:')
+      gpios = await api_instance.v1_get_instance_gpios(instance.id)
+      pprint(gpios)
 
     except Exception as e:      
+      print('Encountered error; cleaning up...')
       error = e
 
 #    print('Deleting instance...')
