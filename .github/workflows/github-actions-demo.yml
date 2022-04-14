@@ -63,4 +63,5 @@ jobs:
           echo "cp ${{ github.workspace }}/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/."
           cp ${{ github.workspace }}/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/.
           npm install split2 promise-socket
+          sleep 10
           node physical-device-test.js
