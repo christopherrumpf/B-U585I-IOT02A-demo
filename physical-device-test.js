@@ -35,6 +35,9 @@ async function main() {
 
   ip = "10.42.0.220"
 
+  // sleep 30s for the device to boot and connect to wifi
+  sleep(30000)
+  
   // Compare the sensor levels reported by the device
   const temp_result  = await readTemperatureSensor(ip)
   const press_result = await readPressureSensor(ip)
