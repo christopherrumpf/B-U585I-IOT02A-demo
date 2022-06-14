@@ -40,7 +40,7 @@ jobs:
       - name: test
         run: |
           pip3 install avh-api avh-api-async websockets python-dateutil aiohttp six urllib3
-          python3 stm32_bsp_test.py
+          python3 stm32_bsp_test.py https://app.avh.arm.com/api 1ce5a351d8851ae708c1.16a1e32a12c16092fb9cdac297052ac5a1fedac2d80f77eeefe993bba338da95b758441ffc871145683182bbc8d50a1f228bfb39acdbf3b6330a76682db304c4
 #  physical-device-test:
 #    runs-on: self-hosted
 #    needs: build
