@@ -1,6 +1,8 @@
 import asyncio
 import os
 import re
+from cmath import pi, sin
+import math
 from websockets import client as ws
 import sys
 
@@ -60,38 +62,38 @@ async def pressButton(instance):
 async def testBspImage(instance):
   global api_instance
   global ctx
-  text = ''
-  done = False
+  temp_low = 20
+  temp_high = 30
+  press_low = 980
+  press_high = 1030
+  humid_low = 20
+  humid_high = 70
 
-  consoleEndpoint = await api_instance.v1_get_instance_console(instance.id)
-  console = await ws.connect(consoleEndpoint.url, ssl=ctx)
-  try:
-    async for message in console:
-      if done:
-        break
+  x = 0.0
+  for i in range(3):
 
-      text += message.decode('utf-8')
-      while '\n' in text:
-        offset = text.find('\n')
-        line, text = text[:offset], text[offset+1:]
-        print('<< %s' % line)
+    print("\nTest run " + str(i) + "...")
 
-        match = re.match(r'(?:Switch \S+ LED(\d)|Please press.*User (button)|\**RANGING (SENSOR)\**)', line)
-        if (match):
-          if match[1]:
-            await printLeds(instance)
-          elif match[2]:
-            await pressButton(instance)
-          elif match[3]:
-            # Done testing GPIOs
-            print('Test completed')
-            done = True
-            break
+    t_cur = ((25 + math.sin(x) * ((temp_high - temp_low) / 2)) * 4) * 0.25
+    t_cur = f'{t_cur:.2f}'
 
-  finally:
-    console.close_timeout = 1
-    await console.close()
+    # Set sensor values...
+    print("Setting sensor values : [*] T: " + str(t_cur))
+    api_response = await api_instance.v1_set_instance_peripherals(instance.id, {"temperature": t_cur})
+    pprint(api_response)
 
+    # Get sensor values...
+    p = await api_instance.v1_get_instance_peripherals(instance.id)
+    print("Got sensor values : [*] T: " + str(p.temperature))
+
+    if str(p.temperature) != str(t_cur):
+      print("FAIL T")
+
+    # TODO
+    # ADD WEBSCRAPER TO VALIDATE TEMP MADE IT THROUGH THE WEBSERVER
+
+    # Randomization...
+    x += math.pi / 20.0
 
 # Defining the host is optional and defaults to https://app.avh.arm.com/api
 # See configuration.py for a list of all supported configuration parameters.
