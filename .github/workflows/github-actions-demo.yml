@@ -32,9 +32,6 @@ jobs:
     steps:
       - name: pull tests
         uses: actions/checkout@v2
-      - name: pull libs
-        run: |
-          git clone https://github.com/ARM-software/avh-api.git
       - name: download-elf
         uses: actions/download-artifact@master
         with:
@@ -42,26 +39,23 @@ jobs:
           path: ${{ github.workspace }}/avh-api/python/examples/assets
       - name: test
         run: |
-          pip3 install websockets six python-dateutil urllib3 aiohttp
-          npm install @openapitools/openapi-generator-cli -g
-          cp ${{ github.workspace }}/virtual-device-test.py ${{ github.workspace }}/avh-api/python/examples/async/.
-          cd avh-api/python
-          make examples/async/virtual-device-test.py
-  physical-device-test:
-    runs-on: self-hosted
-    needs: build
-    steps:
-      - name: pull
-        uses: actions/checkout@v2
-      - name: download-bin
-        uses: actions/download-artifact@master
-        with:
-          name: IOT_HTTP_WebServer.bin
-          path: ${{ github.workspace }}
-      - name: test
-        run: |
-          echo "cp ${{ github.workspace }}/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/."
-          cp ${{ github.workspace }}/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/.
-          npm install split2 promise-socket
-          sleep 10
-          node physical-device-test.js
+          pip3 install avh-api avh-api-async websockets python-dateutil aiohttp six urllib3
+          python3 stm32_bsp_test.py
+#  physical-device-test:
+#    runs-on: self-hosted
+#    needs: build
+#    steps:
+#      - name: pull
+#        uses: actions/checkout@v2
+#      - name: download-bin
+#        uses: actions/download-artifact@master
+#        with:
+#          name: IOT_HTTP_WebServer.bin
+#          path: ${{ github.workspace }}
+#      - name: test
+#        run: |
+#          echo "cp ${{ github.workspace }}/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/."
+#          cp ${{ github.workspace }}/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/.
+#          npm install split2 promise-socket
+#          sleep 10
+#          node physical-device-test.js
