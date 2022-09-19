@@ -41,21 +41,21 @@ jobs:
         run: |
           pip3 install avh-api avh-api-async websockets python-dateutil aiohttp six urllib3
           python3 stm32_bsp_test.py https://app.avh.arm.com/api 1ce5a351d8851ae708c1.16a1e32a12c16092fb9cdac297052ac5a1fedac2d80f77eeefe993bba338da95b758441ffc871145683182bbc8d50a1f228bfb39acdbf3b6330a76682db304c4
-#  physical-device-test:
-#    runs-on: self-hosted
-#    needs: build
-#    steps:
-#      - name: pull
-#        uses: actions/checkout@v2
-#      - name: download-bin
-#        uses: actions/download-artifact@master
-#        with:
-#          name: IOT_HTTP_WebServer.bin
-#          path: ${{ github.workspace }}
-#      - name: test
-#        run: |
-#          echo "cp ${{ github.workspace }}/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/."
-#          cp ${{ github.workspace }}/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/.
-#          npm install split2 promise-socket
-#          sleep 10
-#          node physical-device-test.js
+  physical-device-test:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - name: pull
+        uses: actions/checkout@v2
+      - name: download-bin
+        uses: actions/download-artifact@master
+        with:
+          name: IOT_HTTP_WebServer.bin
+          path: ${{ github.workspace }}
+      - name: test
+        run: |
+          echo "cp ${{ github.workspace }}/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/."
+          cp ${{ github.workspace }}/IOT_HTTP_WebServer.bin /media/mrrumpf/DIS_U585AI/.
+          npm install split2 promise-socket
+          sleep 10
+          node physical-device-test.js
